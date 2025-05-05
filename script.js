@@ -2,15 +2,15 @@ let currentUser = null;
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
 function showRegisterForm() {
-  document.getElementById('mainPage').style.display = 'none';
-  document.getElementById('registerForm').style.display = 'block';
-  document.getElementById('loginForm').style.display = 'none';
+  document.getElementById('registerModal').style.display = 'block';
 }
 
 function showLoginForm() {
-  document.getElementById('mainPage').style.display = 'none';
-  document.getElementById('registerForm').style.display = 'none';
-  document.getElementById('loginForm').style.display = 'block';
+  document.getElementById('loginModal').style.display = 'block';
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = 'none';
 }
 
 function register() {
@@ -23,9 +23,8 @@ function register() {
     return;
   }
 
-  const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-  if (!emailPattern.test(email)) {
-    alert("Пожалуйста, введите правильный Gmail.");
+  if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+    alert("Введите корректный email.");
     return;
   }
 
@@ -38,8 +37,8 @@ function register() {
   users.push(newUser);
   localStorage.setItem('users', JSON.stringify(users));
 
-  alert("Вы успешно зарегистрированы!");
-  window.location.href = "questions.html";
+  alert("Вы успешно зарегистрировались!");
+  closeModal('registerModal');
 }
 
 function login() {
@@ -50,7 +49,8 @@ function login() {
 
   if (user) {
     currentUser = user;
-    window.location.href = "questions.html";
+    alert("Успешный вход!");
+    closeModal('loginModal');
   } else {
     alert("Неверный никнейм или пароль.");
   }
