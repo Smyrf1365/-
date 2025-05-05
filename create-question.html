@@ -8,12 +8,19 @@
 </head>
 <body>
   <div class="container">
-    <h1>Создание вопроса</h1>
-    <div class="form-container">
-      <input type="text" id="questionTitle" placeholder="Введите заголовок вопроса" />
-      <textarea id="questionDescription" placeholder="Введите описание вопроса"></textarea>
-      <button onclick="saveQuestion()">Сохранить вопрос</button>
-    </div>
+    <h1>Создать новый вопрос</h1>
+
+    <form onsubmit="event.preventDefault(); saveQuestion();">
+      <label for="questionTitle">Заголовок:</label>
+      <input type="text" id="questionTitle" placeholder="Введите заголовок" required />
+
+      <label for="questionDescription">Описание:</label>
+      <textarea id="questionDescription" placeholder="Введите описание" required></textarea>
+
+      <button type="submit">Сохранить вопрос</button>
+    </form>
+
+    <button onclick="window.location.href='questions.html'">Вернуться к списку вопросов</button>
   </div>
 
   <script src="questions.js"></script>
