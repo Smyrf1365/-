@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вопросы и Ответы</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Задайте вопрос</h1>
+
+    <!-- Кнопка "Создать вопрос" -->
+    <button onclick="window.location.href='create-question.html'">Создать вопрос</button>
+
+    <h3>Поиск вопросов</h3>
+    <input type="text" id="searchInput" placeholder="Поиск вопросов" oninput="searchQuestions()" />
+
+    <div id="questionsList">
+      <!-- Список вопросов будет выводиться здесь -->
+    </div>
+
+    <button id="loadMoreQuestions" onclick="loadMoreQuestions()" style="display:none;">Загрузить еще</button>
+  </div>
+
+  <script src="questions.js"></script>
+  <script>
+    // Функция для отображения вопросов при загрузке страницы
+    window.onload = function() {
+      // Обновляем список вопросов из localStorage при загрузке страницы
+      displayQuestions();
+    };
+
+    // Функция поиска вопросов
+    function searchQuestions() {
+      const searchText = document.getElementById('searchInput').value.trim().toLowerCase();
+      const filteredQuestions = questions.filter(q => q.title.toLowerCase().includes(searchText));
+
+      // Отображение отфильтрованных вопросов
+      displayFilteredQuestions(filteredQuestions);
+    }
+
+    // Функция для отображения отфильтрованных вопросов
+    function displayFilteredQuestions(filteredQuestions) {
+      const questionsList = document.getElementById('questionsList');
+      questionsList.innerHTML = ''; // Очистка списка
+
+      filteredQuestions.forEach(question => {
+        const questionElement = document.createElement('div');
+        questionElement.classList.add('question');
+
+        const questionTitle = document.createElement('h3');
+        questionTitle.textContent = question.title; // Используем title
+        questionElement.appendChild(questionTitle);
+
+        const questionDescription = document.createElement('p');
+        questionDescription.textContent = question.description;
+        questionElement.appendChild(questionDescription);
+
+        questionsList.appendChild(questionElement);
+      });
+
+      // Если нет результатов, показываем сообщение
+      if (filteredQuestions.length === 0) {
+        const noResultsMessage = document.createElement('p');
+        noResultsMessage.textContent = "Нет вопросов, соответствующих поисковому запросу.";
+        questionsList.appendChild(noResultsMessage);
+      }
+    }
+  </script>
+</body>
+</html>

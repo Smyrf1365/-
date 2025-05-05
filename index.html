@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация и Логин</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Вопросы и Ответы</h1>
+    <div id="mainPage" class="form-container">
+      <button onclick="showRegisterForm()">Зарегистрироваться</button>
+      <button onclick="showLoginForm()">Войти</button>
+    </div>
+    
+    <!-- Форма регистрации -->
+    <div id="registerForm" class="form-container" style="display:none;">
+      <h2>Регистрация</h2>
+      <input type="text" id="registerUsername" placeholder="Введите никнейм" />
+      <input type="email" id="registerEmail" placeholder="Введите свой Gmail" />
+      <input type="password" id="registerPassword" placeholder="Введите пароль" />
+      <button onclick="register()">Зарегистрироваться</button>
+      <p>Уже есть аккаунт? <button onclick="showLoginForm()">Войти</button></p>
+    </div>
+
+    <!-- Форма логина -->
+    <div id="loginForm" class="form-container" style="display:none;">
+      <h2>Логин</h2>
+      <input type="text" id="loginUsername" placeholder="Введите никнейм" />
+      <input type="password" id="loginPassword" placeholder="Введите пароль" />
+      <button onclick="login()">Войти</button>
+      <p>Еще нет аккаунта? <button onclick="showRegisterForm()">Зарегистрироваться</button></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
