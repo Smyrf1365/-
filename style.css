@@ -3,96 +3,137 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-  
-  body {
-    font-family: 'Inter', sans-serif;
-    background: #f4f7fc;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
     color: #333;
-    line-height: 1.6;
-  }
-  
-  /* Контейнер */
-  .container {
+    line-height: 1.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Контейнер */
+.container {
     max-width: 800px;
     margin: 40px auto;
-    background: #fff;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-  }
-  
-  /* Заголовки */
-  h1, h2, h3 {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Заголовки */
+h1, h2, h3 {
     text-align: center;
     margin-bottom: 20px;
-    color: #222;
-  }
-  
-  /* Формы */
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  textarea {
+    color: #444;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Формы */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
     width: 100%;
-    padding: 12px 15px;
+    padding: 15px 20px;
     margin: 10px 0 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: 2px solid #ddd;
+    border-radius: 12px;
     font-size: 16px;
-  }
-  
-  /* Кнопки */
-  button {
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+input:focus,
+textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    outline: none;
+}
+
+/* Кнопки */
+button {
     display: inline-block;
-    background: linear-gradient(135deg, #4f46e5, #3b82f6);
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
     color: white;
-    padding: 12px 20px;
-    font-size: 16px;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: 0.3s ease;
-    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
-  }
-  
-  button:hover {
-    background: linear-gradient(135deg, #4338ca, #2563eb);
-  }
-  
-  /* Вопросы */
-  #questionsList .question {
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: box-shadow 0.3s;
-  }
-  
-  #questionsList .question:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  }
-  
-  #questionsList .question h3 {
-    margin-bottom: 10px;
-    color: #111827;
-  }
-  
-  #questionsList .question p {
-    color: #6b7280;
-  }
-  
-  /* Адаптивность */
-  @media (max-width: 600px) {
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
+    text-transform: uppercase;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #5a0dbc, #1d4ed8);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(90, 13, 188, 0.4);
+}
+
+/* Вопросы */
+#questionsList .question {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+#questionsList .question:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+#questionsList .question h3 {
+    margin-bottom: 15px;
+    color: #1f2937;
+    font-weight: bold;
+}
+
+#questionsList .question p {
+    color: #4b5563;
+    font-size: 15px;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
     .container {
-      margin: 20px;
-      padding: 20px;
+        margin: 20px;
+        padding: 20px;
     }
-  
+
     button {
-      width: 100%;
-      margin-top: 10px;
+        width: 100%;
+        margin-top: 15px;
     }
-  }
-  
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
