@@ -10,22 +10,26 @@
   <div class="container">
     <h1>Список вопросов</h1>
 
-    <button onclick="window.location.href='create-question.html'">Создать новый вопрос</button>
+    <!-- Кнопка создания вопроса -->
+    <button id="createQuestion" onclick="window.location.href='create-question.html'" style="display: none;">Создать новый вопрос</button>
 
     <h3>Поиск вопросов</h3>
     <input type="text" id="searchInput" placeholder="Введите текст для поиска" oninput="searchQuestions()" />
 
-    <div id="questionsList">
-      <!-- Вопросы будут отображаться здесь -->
-    </div>
+    <div id="questionsSection" style="display: none;">
+      <div id="questionsList">
+        <!-- Вопросы будут отображаться здесь -->
+      </div>
 
-    <button id="loadMoreQuestions" onclick="loadMoreQuestions()" style="display:none;">Загрузить еще</button>
+      <button id="loadMoreQuestions" onclick="loadMoreQuestions()" style="display:none;">Загрузить еще</button>
+    </div>
   </div>
 
   <script src="questions.js"></script>
   <script>
     window.onload = function() {
       displayQuestions();
+      updateUI(); // Обновляем интерфейс при загрузке
     };
   </script>
 </body>
