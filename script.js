@@ -51,7 +51,28 @@ function login() {
     currentUser = user;
     alert("Успешный вход!");
     closeModal('loginModal');
+    updateUI(); // Обновляем интерфейс после авторизации
   } else {
     alert("Неверный никнейм или пароль.");
   }
 }
+
+function updateUI() {
+  const createQuestionButton = document.querySelector('button#createQuestion');
+  const questionsSection = document.querySelector('#questionsSection');
+
+  if (currentUser) {
+    // Показываем кнопки и секции только для авторизованных пользователей
+    if (createQuestionButton) createQuestionButton.style.display = 'inline-block';
+    if (questionsSection) questionsSection.style.display = 'block';
+  } else {
+    // Скрываем кнопки и секции для неавторизованных пользователей
+    if (createQuestionButton) createQuestionButton.style.display = 'none';
+    if (questionsSection) questionsSection.style.display = 'none';
+  }
+}
+
+// При загрузке страницы обновляем интерфейс
+window.onload = function () {
+  updateUI();
+};
